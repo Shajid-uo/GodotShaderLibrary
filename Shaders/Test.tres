@@ -1,0 +1,31 @@
+[gd_resource type="VisualShader" load_steps=3 format=3 uid="uid://dov6bltck36ad"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_qmgc6"]
+input_name = "eye_offset"
+
+[sub_resource type="VisualShaderNodeTextureParameterTriplanar" id="VisualShaderNodeTextureParameterTriplanar_u1svl"]
+parameter_name = "TextureParameterTriplanar"
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+
+
+
+void fragment() {
+// Input:2
+	vec3 n_out2p0 = EYE_OFFSET;
+
+
+// Output:0
+	ALBEDO = n_out2p0;
+
+
+}
+"
+nodes/fragment/2/node = SubResource("VisualShaderNodeInput_qmgc6")
+nodes/fragment/2/position = Vector2(60, 220)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTextureParameterTriplanar_u1svl")
+nodes/fragment/3/position = Vector2(40, 300)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0)
